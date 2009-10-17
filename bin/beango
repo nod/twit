@@ -1,0 +1,18 @@
+#!/bin/sh
+
+num=$1
+cmd=$2
+
+if [ -z $num -o -z $cmd -o ! -x $cmd ] ; then
+    echo ERR usage: beans NumToSpawn CmdToSpan
+    exit
+fi
+
+echo starting $cmd $num times
+while [ $num -gt 0 ]; do
+    $cmd &
+    let num=num-1
+done
+
+
+
